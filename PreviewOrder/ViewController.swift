@@ -67,9 +67,10 @@ class ViewController: UIViewController, UIViewControllerPreviewingDelegate {
     override func previewActionItems() -> [UIPreviewActionItem] {
         print ("previewActionItems() called")
 
-        let actionItem = UIPreviewAction(title: "Call #\(++nr)",
+        let callNr = ++nr
+        let actionItem = UIPreviewAction(title: "Call #\(callNr)",
             style: .Default) { (_, _) -> Void in
-                print("Action tapped")
+                print("Action #\(callNr) tapped")
         }
 
         return [actionItem]

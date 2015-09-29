@@ -11,9 +11,6 @@ import UIKit
 /// Example view controller that handles view controller previewing.
 class ViewController: UIViewController, UIViewControllerPreviewingDelegate {
 
-    /// Just a counter to show the number of calls to previewActionItems()
-    var nr : Int = 0
-
     /// The previewing context while registerd for previewing
     weak var previewingContext : UIViewControllerPreviewing?
 
@@ -61,18 +58,5 @@ class ViewController: UIViewController, UIViewControllerPreviewingDelegate {
     func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
         print ("previewingContext(commitViewController:) called")
         showViewController(viewControllerToCommit, sender: self)
-    }
-
-    /// That's what we want to check
-    override func previewActionItems() -> [UIPreviewActionItem] {
-        print ("previewActionItems() called")
-
-        let callNr = ++nr
-        let actionItem = UIPreviewAction(title: "Call #\(callNr)",
-            style: .Default) { (_, _) -> Void in
-                print("Action #\(callNr) tapped")
-        }
-
-        return [actionItem]
     }
 }
